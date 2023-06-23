@@ -18,13 +18,13 @@ public class UserRoleService {
             from users u
             left join users_roles ur on ur.user_id = u.id
             left join roles r on ur.role_nameid = r.nameid
-            where r.nameid=upper(?1);
+            where r.nameid=upper(?);
             """;
 
     private static final String QUERY_USER_ROLES_BY_USER_ID = """
             select ur.role_nameid
             from users_roles ur
-            where ur.user_id = ?1;
+            where ur.user_id = ?;
             """;
 
     private static final String QUERY_USER_ROLES_BY_USER_NAME = """
@@ -32,7 +32,7 @@ public class UserRoleService {
             from users_roles ur
             join users u on ur.user_id = u.id
             join roles r on ur.role_nameid = r.nameid
-            where u.name = ?1;
+            where u.name = ?;
             """;
 
     private final Connection connection;
