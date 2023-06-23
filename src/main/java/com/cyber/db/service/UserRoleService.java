@@ -48,11 +48,12 @@ public class UserRoleService {
 
             ArrayList<User> namesList = new ArrayList<>();
 
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                long id = resultSet.getLong(1);
-                String name = resultSet.getString(2);
-                namesList.add(new User(id, name));
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    long id = resultSet.getLong(1);
+                    String name = resultSet.getString(2);
+                    namesList.add(new User(id, name));
+                }
             }
             return namesList;
         }
@@ -64,10 +65,11 @@ public class UserRoleService {
 
             HashSet<Role> roles = new HashSet<>();
 
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                String nameId = resultSet.getString(1);
-                roles.add(new Role(nameId));
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    String nameId = resultSet.getString(1);
+                    roles.add(new Role(nameId));
+                }
             }
             return roles;
         }
@@ -79,10 +81,11 @@ public class UserRoleService {
 
             HashSet<Role> roles = new HashSet<>();
 
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                String nameId = resultSet.getString(1);
-                roles.add(new Role(nameId));
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    String nameId = resultSet.getString(1);
+                    roles.add(new Role(nameId));
+                }
             }
             return roles;
         }
